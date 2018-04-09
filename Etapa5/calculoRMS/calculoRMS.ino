@@ -15,10 +15,15 @@ int rms = 0 ;
 
 void setup()
 {
+
+  initADC();
   initTimer();
 }
 
-
+/**
+ * [loop description]
+ * S Global
+ */
 void loop()
 {
 

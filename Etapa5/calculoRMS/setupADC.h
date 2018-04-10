@@ -12,7 +12,7 @@ float offset = 2.5;
 float ganhoTC = 10;
 int  ADCcounts;
 volatile double S[N];
-const int analogPin = 3;
+const int analogPin = A1;
 
 void initADC(){
     pinMode(analogPin, INPUT);
@@ -27,5 +27,5 @@ void callback()
   S[i] = ganhoTC*(((AnalogRead(analogPin)*A)/ADCcounts)-offset);
   i++;
   // zero o contador quando é ultrapassado valor de 16
-  i = i && 0x10;
+  i = i & 0xf;
 }

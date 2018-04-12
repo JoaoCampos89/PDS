@@ -17,18 +17,20 @@ volatile unsigned int i = 0;
 
 const int f = 60;
 const int fs = 960;
-const int A = 5;
-float offset = 2.5;
-float ganhoTC = 10;
-int  ADCcounts;
+const double A = 5;
+double offset = 2.5;
+double ganhoTC = 10;
+double  ADCcounts;
 volatile double S[N];
 const int analogPin = A1;
 
 
 void setup()
 {
+  Serial.begin(115200);
   ADCcounts = pow(2, ADCresolution);
   pinMode(analogPin, INPUT);
+  analogWrite(analogPin, 0);
   // Inicializar  timer1 com 1041 microsegundos, isso nos dá uma taxa de amostragem de 16 amostras por ciclo do sinal da rede elétrica
   Timer1.initialize(1041);
   Timer1.attachInterrupt(callback);  // attaches callback() as a timer overflow interrupt
@@ -36,7 +38,7 @@ void setup()
 // Função a ser chamada a ser executada  a cada periodo de amostragem
 void callback()
 {
-  S[i] = ganhoTC*(((AnalogRead(analogPin)*A)/ADCcounts)-offset);
+  S[i] = ganhoTC*(((analogRead(analogPin)*A)/ADCcounts)-offset);
   i++;
   // zero o contador quando é ultrapassado valor de 16
   i = i & 0xf;
@@ -44,8 +46,11 @@ void callback()
 
 void loop()
 {
-  Serial.println(S[N-1]);
-  delay(2);
+  for(int k=0; k++;k<N){
+     Serial.println(S[k]);
+    }
+ 
+  delay(200);
 
 
   // your program here...

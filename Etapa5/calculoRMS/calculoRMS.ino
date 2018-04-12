@@ -11,11 +11,11 @@
 #include "setupTimer.h"
 
 
-int rms = 0 ;
+double rms = 0 ;
 
 void setup()
 {
-
+  Serial.begin(115200);
   initADC();
   initTimer();
 }
@@ -35,7 +35,11 @@ void loop()
   rms = rms/N;
   rms = sqrt(rms);
 
-  Serial.println(rms);
-  delay(10);
+  for(int k=0; k++;k<N){
+     Serial.println(S[k]);
+  }
+ 
+  delay(200);
+
 
 }

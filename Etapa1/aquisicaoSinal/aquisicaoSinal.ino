@@ -22,7 +22,9 @@ const int analogPin = A1;
 
 void setup()
 {
+  Serial.begin(115200);
   pinMode(analogPin, INPUT);
+  analogWrite(A1,0);
   // Inicializar  timer1 com 1041 microsegundos, isso nos dá uma taxa de amostragem de 16 amostras por ciclo do sinal da rede elétrica
   Timer1.initialize(1041);
   Timer1.attachInterrupt(callback);  // attaches callback() as a timer overflow interrupt
@@ -30,7 +32,7 @@ void setup()
 // Função a ser chamada a ser executada  a cada periodo de amostragem
 void callback()
 {
-  S[i] = AnalogRead(analogPin);
+  S[i] = analogRead(analogPin);
   i++;
   // zero o contador quando é ultrapassado valor de 16
   i = i & 0xf;
@@ -38,8 +40,11 @@ void callback()
 
 void loop()
 {
-  Serial.println(S[N-1]);
-  delay(2);
+  for(int k=0; k++;k<N){
+     Serial.println(S[k]);
+    }
+ 
+  delay(200);
 
 
   // your program here...

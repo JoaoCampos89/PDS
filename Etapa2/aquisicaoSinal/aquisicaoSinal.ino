@@ -27,8 +27,8 @@ void setup()
   ADCcounts = pow(2, ADCresolution);
   Serial.begin(115200);
   pinMode(analogPin, INPUT);
- // analogWrite(A1,0);
   // Inicializar  timer1 com 1041 microsegundos, isso nos dá uma taxa de amostragem de 16 amostras por ciclo do sinal da rede elétrica
+  //Timer1.initialize(1041);
   Timer1.initialize(1041);
   Timer1.attachInterrupt(callback);  // attaches callback() as a timer overflow interrupt
 }

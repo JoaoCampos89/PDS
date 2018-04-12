@@ -35,11 +35,11 @@ void loop()
   rms = rms/N;
   rms = sqrt(rms);
 
-  for(int k=0; k++;k<N){
-     Serial.println(S[k]);
-  }
- 
-  delay(200);
+  //for(int k=0; k<N; k++){
+   //  Serial.println(S[k]);
+  //}
+  Serial.println(rms,4);
+  delay(2000);
 
 
 }

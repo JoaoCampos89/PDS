@@ -24,8 +24,7 @@ void setup()
  * [loop description]
  * S Global
  */
-void loop()
-{
+void loop(){
 
 // cálculo do rms do sinal
   rms = 0;

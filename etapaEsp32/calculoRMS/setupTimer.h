@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include "TimerOne.h"
 #include "setupADC.h"
 
 

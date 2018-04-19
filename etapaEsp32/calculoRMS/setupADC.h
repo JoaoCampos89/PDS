@@ -12,7 +12,7 @@ double offset = 2.5;
 double ganhoTC = 1;
 double  ADCcounts;
 volatile double S[N];
-const int analogPin = A1;
+const int analogPin = GPIO_NUM_36;
 
 void initADC(){
     pinMode(analogPin, INPUT);
@@ -27,7 +27,7 @@ portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
 
 // Função a ser chamada a ser executada  a cada periodo de amostragem
 void IRAM_ATTR onTimer() {
-{
+
   portENTER_CRITICAL_ISR(&timerMux);
 
   S[i] = ganhoTC*(((analogRead(analogPin)*A)/ADCcounts)-offset);

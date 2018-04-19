@@ -18,7 +18,7 @@ volatile unsigned int i = 0;
 const int f = 60;
 const int fs = 960;
 const double A = 5;
-double offset = 2.5;
+double offset = 0;
 double  ADCcounts;
 volatile double S[N];
 const int analogPin = A1;
